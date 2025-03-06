@@ -1,17 +1,19 @@
 import React from "react";
-import "./App.css";
-import { Router, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { WebProvider } from "./Data/WebContext";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 const App = () => {
   return (
-    <div>
+    <WebProvider>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
-    </div>
+    </WebProvider>
   );
 };
 
