@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
-
+import Chatbot from "../components/Chatbot";
 import hero from "../assets/hero.jpg";
 import ScrollToTopButton from "../components/ScrollToTopButton";
+import Filler from "../components/Filler";
 
 const Home = () => {
   useEffect(() => {
@@ -67,6 +68,8 @@ const Home = () => {
         />
       </div>
 
+      <Filler />
+      <Chatbot />
       <ScrollToTopButton />
     </section>
   );
