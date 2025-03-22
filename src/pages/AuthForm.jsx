@@ -91,7 +91,7 @@ const AuthPage = () => {
               <span className="text-3xl sm:text-4xl md:text-5xl">👨‍⚕️</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
-              {isLogin ? "Welcome Back!" : "Join MediConnect"}
+              {isLogin ? "Welcome Back!" : "Join My Medic"}
             </h2>
             <p className="text-base sm:text-lg text-white/90">
               {isLogin
@@ -112,7 +112,7 @@ const AuthPage = () => {
             {/* Mobile-only welcome text */}
             <div className="sm:hidden text-center mb-6">
               <h1 className="text-xl font-bold text-gray-800">
-                {isLogin ? "Welcome Back!" : "Join MediConnect"}
+                {isLogin ? "Welcome Back!" : "Join My Medic"}
               </h1>
               <p className="text-sm text-gray-600 mt-1">
                 {isLogin

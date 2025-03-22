@@ -42,8 +42,8 @@ const Footer = () => {
     },
     {
       icon: Mail,
-      text: "support@mediconnect.com",
-      href: "mailto:support@mediconnect.com",
+      text: "support@mymedic.com",
+      href: "mailto:support@mymedic.com",
     },
     {
       icon: MapPin,
@@ -63,11 +63,11 @@ const Footer = () => {
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/10 group-hover:bg-white/20 rounded-xl transition-colors flex items-center justify-center">
                 <img
                   src="/ico.png"
-                  alt="MediConnect"
+                  alt="My Medic"
                   className="w-6 h-6 sm:w-8 sm:h-8 object-cover"
                 />
               </div>
-              <span className="text-lg sm:text-xl font-bold text-white">MediConnect</span>
+              <span className="text-lg sm:text-xl font-bold text-white">My Medic</span>
             </Link>
             <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-md">
               Transforming healthcare through technology. We connect patients
@@ -186,7 +186,7 @@ const Footer = () => {
       <div className="border-t border-gray-800 py-4 sm:py-6">
         <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
           <p className="text-xs sm:text-sm text-gray-400 text-center sm:text-left">
-            © {new Date().getFullYear()} MediConnect. All rights reserved.
+            © {new Date().getFullYear()} My Medic. All rights reserved.
           </p>
           <p className="text-xs sm:text-sm text-gray-400 flex items-center space-x-1 sm:space-x-2 sm:mr-14">
             <span>Made with</span>

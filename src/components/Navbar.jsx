@@ -34,10 +34,10 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2 sm:space-x-3 hover:bg-white/10 transition-colors pr-3 rounded-r-full rounded-l-full group">
           <div className="w-8 sm:w-10 h-8 sm:h-10 bg-white/10 group-hover:bg-white/20 rounded-full transition-colors flex items-center justify-center">
-            <img src="/ico.png" alt="MediConnect" className="object-cover" />
+            <img src="/ico.png" alt="My Medic" className="object-cover" />
           </div>
-          <span className="text-lg sm:text-xl md:text-2xl font-bold text-white">
-            MediConnect
+          <span className="text-xl md:text-2xl font-bold text-white">
+            My Medic
           </span>
         </Link>
 

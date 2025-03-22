@@ -38,7 +38,7 @@ export const WhyChooseUs = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            Why Choose MediConnect?
+            Why Choose My Medic?
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             We're committed to providing the best healthcare experience through our platform.
@@ -189,13 +189,13 @@ export const Testimonials = () => {
       name: "Sarah Johnson",
       role: "Patient",
       image: "https://ui-avatars.com/api/?name=Sarah+Johnson&background=0D9488&color=fff",
-      content: "MediConnect has transformed how I manage my healthcare. The virtual consultations are so convenient!"
+      content: "My Medic has transformed how I manage my healthcare. The virtual consultations are so convenient!"
     },
     {
       name: "Dr. Michael Chen",
       role: "Cardiologist",
       image: "https://ui-avatars.com/api/?name=Michael+Chen&background=0D9488&color=fff",
-      content: "As a healthcare provider, I appreciate how MediConnect streamlines patient care and communication."
+      content: "As a healthcare provider, I appreciate how My Medic streamlines patient care and communication."
     },
     {
       name: "Emily Rodriguez",
@@ -219,7 +219,7 @@ export const Testimonials = () => {
             What Our Users Say
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our users have to say about their experience with MediConnect.
+            Don't just take our word for it. Here's what our users have to say about their experience with My Medic.
           </p>
         </motion.div>
 

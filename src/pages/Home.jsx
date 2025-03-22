@@ -9,7 +9,7 @@ import Filler from "../components/Filler";
 import Footer from "../components/Footer";
 const Home = () => {
   useEffect(() => {
-    document.title = "Home - MediConnect";
+    document.title = "Home - My Medic";
   }, []);
 
   return (
