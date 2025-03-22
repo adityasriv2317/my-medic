@@ -13,6 +13,17 @@ const Chatbot = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  // Handle scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -71,17 +82,19 @@ const Chatbot = () => {
     );
   };
 
+  // Calculate button position based on scroll
+  const buttonPosition = scrollPosition > 300 ? "right-16 sm:right-20" : "right-4 sm:right-6";
+
   return (
-    <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50">
+    <div className={`fixed bottom-4 sm:bottom-6 ${buttonPosition} z-50 transition-all duration-300`}>
       {!chatOpen && (
         <motion.button
           onClick={() => setChatOpen(true)}
-          className="bg-gradient-to-r from-green-800 to-green-700 hover:from-green-700 hover:to-green-600 transition-all duration-300 text-white cursor-pointer px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl shadow-lg flex items-center space-x-2 sm:space-x-3"
+          className="bg-green-600 hover:bg-green-700 transition-all duration-300 text-white cursor-pointer p-3 sm:p-3.5 rounded-xl shadow-lg"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          <FaRobot className="text-lg sm:text-xl" />
-          <span className="font-medium text-sm sm:text-base">Chat with AI</span>
+          <FaRobot className="text-xl sm:text-2xl" />
         </motion.button>
       )}
 
@@ -106,7 +119,7 @@ const Chatbot = () => {
                 <div className="flex items-center space-x-2 sm:space-x-3">
                   {!user && (
                     <>
-                      <Link to="/auth" className="hidden sm:block">
+                      <Link to="/auth?type=login" className="hidden sm:block">
                         <motion.button
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
@@ -115,7 +128,7 @@ const Chatbot = () => {
                           Login
                         </motion.button>
                       </Link>
-                      <Link to="/auth" className="hidden sm:block">
+                      <Link to="/auth?type=signup" className="hidden sm:block">
                         <motion.button
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
@@ -160,7 +173,9 @@ const Chatbot = () => {
                     >
                       {msg.sender === "bot" && msg.text.length > 300 ? (
                         <div className="space-y-2">
-                          <p className="text-sm sm:text-base leading-relaxed">{msg.expanded ? msg.text : `${msg.text.slice(0, 300)}...`}</p>
+                          <p className="text-sm sm:text-base leading-relaxed">
+                            {msg.expanded ? msg.text : `${msg.text.slice(0, 300)}...`}
+                          </p>
                           <button
                             onClick={() => toggleExpand(index)}
                             className="text-green-600 hover:text-green-700 text-xs sm:text-sm font-medium"

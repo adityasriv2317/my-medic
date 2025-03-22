@@ -47,7 +47,7 @@ const Navbar = () => {
             <li key={index}>
               <Link
                 to={item.path}
-                className="relative px-3 py-2 transition duration-300 hover:bg-white/10 rounded-lg group flex items-center space-x-2"
+                className="relative px-3 py-2 transition duration-300 hover:bg-white/10 rounded-t-lg group flex items-center space-x-2"
               >
                 <item.icon size={18} className="opacity-80" />
                 <span>{item.name}</span>

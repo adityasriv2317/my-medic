@@ -27,13 +27,13 @@ const ScrollToTopButton = () => {
   return (
     <motion.button
       onClick={scrollToTop}
-      className={`fixed bottom-6 right-5 bg-green-500 text-white p-3 rounded-full shadow-lg transition-all ${
+      className={`fixed bottom-5 md:bottom-7 right-5 bg-green-600 text-white p-3 rounded-full shadow-lg transition-all ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
     >
-      <ArrowUpIcon className="h-6 w-6" />
+      <ArrowUpIcon className="h-4 w-4 md:h-6 md:w-6" />
     </motion.button>
   );
 };
