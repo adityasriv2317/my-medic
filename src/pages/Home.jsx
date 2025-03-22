@@ -6,7 +6,7 @@ import Chatbot from "../components/Chatbot";
 import hero from "../assets/hero.jpg";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import Filler from "../components/Filler";
-
+import Footer from "../components/Footer";
 const Home = () => {
   useEffect(() => {
     document.title = "Home - MediConnect";
@@ -69,6 +69,7 @@ const Home = () => {
       </div>
 
       <Filler />
+      <Footer />
       <Chatbot />
       <ScrollToTopButton />
     </section>
