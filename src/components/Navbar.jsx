@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: "Home", icon: Home, path: "/" },
-    { name: "Find a Doctor", icon: Search, path: "/findadoctor" },
+    { name: "Find a Doctor", icon: Search, path: "/medics" },
     { name: "Medicines", icon: Pill, path: "/medicines" },
     { name: "Appointments", icon: Calendar, path: "/appointments" },
   ];

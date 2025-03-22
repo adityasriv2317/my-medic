@@ -186,19 +186,19 @@ export const Statistics = () => {
 export const Testimonials = () => {
   const testimonials = [
     {
-      name: "Sarah Johnson",
+      name: "Alok Kumar",
       role: "Patient",
       image: "https://ui-avatars.com/api/?name=Sarah+Johnson&background=0D9488&color=fff",
       content: "My Medic has transformed how I manage my healthcare. The virtual consultations are so convenient!"
     },
     {
-      name: "Dr. Michael Chen",
+      name: "Dr. Bandana Sharma",
       role: "Cardiologist",
       image: "https://ui-avatars.com/api/?name=Michael+Chen&background=0D9488&color=fff",
       content: "As a healthcare provider, I appreciate how My Medic streamlines patient care and communication."
     },
     {
-      name: "Emily Rodriguez",
+      name: "Aniket Raj",
       role: "Patient",
       image: "https://ui-avatars.com/api/?name=Emily+Rodriguez&background=0D9488&color=fff",
       content: "The 24/7 support and easy access to my health records have been invaluable for managing my family's health."
