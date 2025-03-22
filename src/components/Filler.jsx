@@ -273,15 +273,15 @@ export const Newsletter = () => {
           <p className="text-gray-600 mb-8">
             Subscribe to our newsletter for the latest health tips, updates, and exclusive offers.
           </p>
-          <form className="flex flex-col sm:flex-row gap-0 justify-center">
+          <form className="flex flex-col sm:flex-row gap-2 md:gap-0 justify-center">
             <input
               type="email"
               placeholder="Enter your email"
-              className="px-6 py-3 rounded-l-xl border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 flex-grow max-w-md"
+              className="px-6 py-3 not-md:rounded-xl md:rounded-l-xl border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 flex-grow max-w-md"
             />
             <button
               type="submit"
-              className="px-8 py-3 bg-green-600 text-white rounded-r-xl hover:bg-green-700 transition-colors font-medium"
+              className="px-8 py-3 bg-green-600 text-white md:rounded-r-xl not-md:rounded-xl hover:bg-green-700 transition-colors font-medium"
             >
               Subscribe
             </button>
