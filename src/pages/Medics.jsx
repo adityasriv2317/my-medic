@@ -16,6 +16,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { toast } from "react-toastify";
 import ToastBox from "../components/ToastBox";
+import Chatbot from "../components/Chatbot";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 // Mock data for doctors (replace with actual API data later)
 const mockDoctors = [
@@ -451,6 +453,8 @@ const Medics = () => {
           )}
         </div>
       </motion.div>
+      <Chatbot />
+      <ScrollToTopButton />
       <Footer />
     </div>
   );

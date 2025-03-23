@@ -46,13 +46,18 @@ const Home = () => {
                 <Link to="/instant-checkup">Get Instant Checkup</Link>
               </motion.button>
 
-              <motion.button
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg transition hover:bg-gray-800"
+                className="px-6 py-3"
               >
-                <Link to="/video-call">Book a Video Call</Link>
-              </motion.button>
+                <Link
+                  to="/medics"
+                  className="bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg transition hover:bg-gray-800"
+                >
+                  Book a Video Call
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         </div>
