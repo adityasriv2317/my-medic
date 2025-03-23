@@ -255,6 +255,10 @@ const Medics = () => {
     setFilteredDoctors(filtered);
   }, [searchQuery, selectedSpecialization, selectedPriceRange]);
 
+  const handleBookAppointment = (doctor) => {
+    navigate("/appointment", { state: { doctor } });
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -407,7 +411,10 @@ const Medics = () => {
                     <span className="text-lg font-semibold text-green-600">
                       {doctor.price}
                     </span>
-                    <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-800 transition-colors duration-300 shadow-sm hover:shadow-md font-medium">
+                    <button 
+                      onClick={() => handleBookAppointment(doctor)}
+                      className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-800 transition-colors duration-300 shadow-sm hover:shadow-md font-medium"
+                    >
                       Book Appointment
                     </button>
                   </div>

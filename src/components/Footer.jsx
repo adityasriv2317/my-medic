@@ -37,13 +37,13 @@ const Footer = () => {
   const contactInfo = [
     {
       icon: Phone,
-      text: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      text: "+91 1234567890",
+      href: "tel: +911234567890",
     },
     {
       icon: Mail,
-      text: "support@mymedic.com",
-      href: "mailto:support@mymedic.com",
+      text: "support@my-medic.vercel.app",
+      href: "mailto:support@my-medic.vercel.app",
     },
     {
       icon: MapPin,
