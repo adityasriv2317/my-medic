@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { WebContext } from "../Data/WebContext";
 import { motion } from "framer-motion";
@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { toast } from "react-toastify";
+import ToastBox from "../components/ToastBox";
 
 // Mock data for doctors (replace with actual API data later)
 const mockDoctors = [
@@ -190,9 +192,32 @@ const Medics = () => {
   );
   const [selectedPriceRange, setSelectedPriceRange] = useState("All Prices");
   const [filteredDoctors, setFilteredDoctors] = useState(mockDoctors);
+  const hasShownToast = useRef(false);
 
   useEffect(() => {
-    if (!loading && !user) {
+    if (!loading && !user && !hasShownToast.current) {
+      hasShownToast.current = true;
+      toast(<ToastBox message="Please login to continue!" />, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        closeButton: false,
+        className: "sm:top-right",
+        style: {
+          width: '100%',
+          maxWidth: '100%',
+          margin: '0 auto',
+          '@media (min-width: 640px)': {
+            width: 'auto',
+            maxWidth: '400px',
+            margin: '0',
+          }
+        }
+      });
       navigate("/auth?type=login");
     }
   }, [user, loading, navigate]);
@@ -291,10 +316,14 @@ const Medics = () => {
                   <select
                     value={selectedSpecialization}
                     onChange={(e) => setSelectedSpecialization(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-green-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent appearance-none text-gray-700"
+                    className="w-full pl-10 pr-4 py-3 border border-green-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent appearance-none text-gray-700 hover:bg-green-50"
                   >
                     {specializations.map((spec) => (
-                      <option key={spec} value={spec}>
+                      <option 
+                        key={spec} 
+                        value={spec}
+                        className="hover:bg-green-500 hover:text-white"
+                      >
                         {spec}
                       </option>
                     ))}
@@ -308,10 +337,10 @@ const Medics = () => {
                   <select
                     value={selectedPriceRange}
                     onChange={(e) => setSelectedPriceRange(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-green-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent appearance-none text-gray-700"
+                    className="w-full pl-10 pr-4 py-3 border border-green-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent appearance-none text-gray-700 hover:bg-green-50"
                   >
                     {priceRanges.map((range) => (
-                      <option key={range.label} value={range.label}>
+                      <option className="hover:bg-green-500 hover:text-white" key={range.label} value={range.label}>
                         {range.label}
                       </option>
                     ))}

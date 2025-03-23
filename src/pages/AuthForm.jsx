@@ -20,8 +20,8 @@ const AuthPage = () => {
   // Set initial form type based on URL parameters
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const formType = params.get('type');
-    setIsLogin(formType !== 'signup');
+    const formType = params.get("type");
+    setIsLogin(formType !== "signup");
   }, [location]);
 
   const handleChange = (e) => {
@@ -66,14 +66,14 @@ const AuthPage = () => {
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-green-800 to-green-900 flex items-center justify-center p-2 sm:p-4">
       {/* Back Button */}
-      <Link 
-        to="/" 
+      <Link
+        to="/"
         className="absolute top-2 sm:top-4 left-2 sm:left-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 px-3 py-1.5 sm:px-4 sm:py-2 text-white flex items-center space-x-2 hover:bg-white/20 transition-colors"
       >
         <ArrowLeft size={18} className="sm:w-5 sm:h-5" />
         <span className="text-sm sm:text-base font-medium">Back</span>
       </Link>
-      
+
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -87,8 +87,16 @@ const AuthPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <div className="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-white/10 rounded-2xl flex items-center justify-center mb-6 sm:mb-8">
-              <span className="text-3xl sm:text-4xl md:text-5xl">👨‍⚕️</span>
+            <div className="grid grid-cols-3 gap-4">
+              <div className="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-white/10 rounded-2xl flex items-center justify-center mb-6 sm:mb-8">
+                <span className="text-3xl sm:text-4xl md:text-5xl">🛡️</span>
+              </div>
+              <div className="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-white/10 rounded-2xl flex items-center justify-center mb-6 sm:mb-8">
+                <span className="text-3xl sm:text-4xl md:text-5xl">👨‍⚕️</span>
+              </div>
+              <div className="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-white/10 rounded-2xl flex items-center justify-center mb-6 sm:mb-8">
+                <span className="text-3xl sm:text-4xl md:text-5xl">💪</span>
+              </div>
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
               {isLogin ? "Welcome Back!" : "Join My Medic"}
@@ -100,7 +108,7 @@ const AuthPage = () => {
             </p>
           </motion.div>
         </div>
-        
+
         {/* Right Side (Auth Form) */}
         <div className="w-full md:w-1/2 p-4 sm:p-8 md:p-12 bg-white">
           <motion.div
@@ -124,7 +132,7 @@ const AuthPage = () => {
             <h2 className="hidden sm:block text-xl sm:text-2xl font-bold text-gray-800 mb-6 sm:mb-8">
               {isLogin ? "Login to Your Account" : "Create Your Account"}
             </h2>
-            
+
             <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
               {!isLogin && (
                 <div>
@@ -137,12 +145,12 @@ const AuthPage = () => {
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base rounded-xl border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-colors"
-                    placeholder="John Doe"
+                    placeholder="Null Name"
                     required
                   />
                 </div>
               )}
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Email Address
@@ -157,7 +165,7 @@ const AuthPage = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Password
@@ -187,7 +195,11 @@ const AuthPage = () => {
                 type="submit"
                 disabled={loading}
                 className={`w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-2 sm:py-2.5 rounded-xl text-sm sm:text-base font-medium
-                  ${loading ? 'opacity-80 cursor-not-allowed' : 'hover:from-green-700 hover:to-green-800'} 
+                  ${
+                    loading
+                      ? "opacity-80 cursor-not-allowed"
+                      : "hover:from-green-700 hover:to-green-800"
+                  } 
                   transition-all duration-300 relative overflow-hidden`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -198,15 +210,19 @@ const AuthPage = () => {
                     <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-white animate-bounce delay-100" />
                     <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-white animate-bounce delay-200" />
                   </div>
+                ) : isLogin ? (
+                  "Login"
                 ) : (
-                  isLogin ? "Login" : "Create Account"
+                  "Create Account"
                 )}
               </motion.button>
             </form>
 
             <div className="mt-4 sm:mt-6 text-center">
               <p className="text-sm sm:text-base text-gray-600">
-                {isLogin ? "Don't have an account?" : "Already have an account?"}
+                {isLogin
+                  ? "Don't have an account?"
+                  : "Already have an account?"}
                 <button
                   onClick={toggleMode}
                   className="ml-2 text-green-600 font-medium hover:text-green-700 transition-colors"

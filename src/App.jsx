@@ -4,6 +4,7 @@ import { WebProvider } from "./Data/WebContext";
 import Home from "./pages/Home";
 import AuthForm from "./pages/AuthForm";
 import Medics from "./pages/Medics";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
@@ -11,9 +12,10 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path='/auth' element={<AuthForm />} />
-          <Route path='/medics' element={<Medics />} />
+          <Route path="/auth" element={<AuthForm />} />
+          <Route path="/medics" element={<Medics />} />
         </Routes>
+        <ToastContainer />
       </Router>
     </WebProvider>
   );

@@ -13,12 +13,12 @@ const Home = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen">
+    <section className="relative min-h-screen overflow-x-hidden">
       {/* Navbar */}
       <Navbar />
 
       {/* Main Hero Section */}
-      <div className="relative w-full h-screen flex">
+      <div className="relative w-full h-screen flex overflow-x-hidden">
         {/* Left Side - Content with Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10"></div>
         <div className="absolute inset-0 flex items-center justify-center px-10 md:px-20 z-20">
