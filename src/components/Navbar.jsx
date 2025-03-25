@@ -1,7 +1,18 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { WebContext } from "../data/WebContext";
-import { Menu, X, LogOut, User, UserPlus, Home, Search, Pill, Calendar } from "lucide-react";
+import {
+  Menu,
+  X,
+  LogOut,
+  User,
+  UserPlus,
+  Home,
+  Search,
+  UserPen,
+  Pill,
+  Calendar,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
@@ -32,7 +43,10 @@ const Navbar = () => {
     >
       <div className="flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2 sm:space-x-3 hover:bg-white/10 transition-colors pr-3 rounded-r-full rounded-l-full group">
+        <Link
+          to="/"
+          className="flex items-center space-x-2 sm:space-x-3 hover:bg-white/10 transition-colors pr-3 rounded-r-full rounded-l-full group"
+        >
           <div className="w-8 sm:w-10 h-8 sm:h-10 bg-white/10 group-hover:bg-white/20 rounded-full transition-colors flex items-center justify-center">
             <img src="/ico.png" alt="My Medic" className="object-cover" />
           </div>
@@ -80,7 +94,7 @@ const Navbar = () => {
                 />
                 <span>{user.name}</span>
               </motion.button>
-              
+
               <AnimatePresence>
                 {showDropdown && (
                   <motion.div
@@ -94,6 +108,11 @@ const Navbar = () => {
                       <p className="text-sm font-medium">{user.name}</p>
                       <p className="text-xs text-gray-500">{user.email}</p>
                     </div>
+                    {/* profile page button */}
+                    <motion.button className="w-full text-left px-4 py-3 text-sm text-green-700 hover:bg-green-50 transition-colors flex items-center space-x-2">
+                      <UserPen size={16} />
+                      <Link to="/profile">Profile</Link>
+                    </motion.button>
                     <button
                       onClick={handleLogout}
                       className="w-full text-left px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors rounded-b-xl flex items-center space-x-2"
@@ -164,7 +183,7 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
-              
+
               {/* Mobile Auth Section */}
               {loading ? (
                 <li className="px-4 py-3 flex justify-center">
@@ -187,6 +206,17 @@ const Navbar = () => {
                       <p className="text-xs text-gray-300">{user.email}</p>
                     </div>
                   </div>
+                  {/* profile page link */}
+                  <motion.div
+                    whileHover={{ scale: 1.01 }}
+                    className="bg-white/10 flex flex-row items-center gap-6 text-white px-6 py-3 my-2 rounded-lg hover:bg-white/20 transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <UserPen size={18} />
+                    <Link to="/profile" className="text-left">
+                      Profile
+                    </Link>
+                  </motion.div>
                   <motion.button
                     onClick={() => {
                       handleLogout();
@@ -201,9 +231,9 @@ const Navbar = () => {
                 </li>
               ) : (
                 <li className="pt-3 mt-2 border-t border-white/10 space-y-2">
-                  <Link 
-                    to="/auth?type=login" 
-                    onClick={() => setIsOpen(false)} 
+                  <Link
+                    to="/auth?type=login"
+                    onClick={() => setIsOpen(false)}
                     className="block"
                   >
                     <motion.button
@@ -214,9 +244,9 @@ const Navbar = () => {
                       <span>Login</span>
                     </motion.button>
                   </Link>
-                  <Link 
-                    to="/auth?type=signup" 
-                    onClick={() => setIsOpen(false)} 
+                  <Link
+                    to="/auth?type=signup"
+                    onClick={() => setIsOpen(false)}
                     className="block"
                   >
                     <motion.button
