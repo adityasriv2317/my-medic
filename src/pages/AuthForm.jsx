@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
-import { WebContext } from "../Data/WebContext";
+import { WebContext } from "../data/WebContext";
 import axios from "axios";
 
 const BASE_URL = "https://mediconnect-pn3n.onrender.com";
@@ -54,8 +54,8 @@ const AuthPage = () => {
           console.log("User logged in:", userData);
         } else {
           signup({
-            "name": formData.name,
-            "email": formData.email
+            name: formData.name,
+            email: formData.email,
           });
           console.log("User signed up:", userData);
         }
@@ -63,12 +63,6 @@ const AuthPage = () => {
       } else {
         setError(response.data.error);
       }
-
-      // if (response.success) {
-      //   navigate("/");
-      // } else {
-      //   setError(response.error);
-      // }
     } catch (err) {
       setError(err.message || "An error occurred. Please try again.");
     } finally {
