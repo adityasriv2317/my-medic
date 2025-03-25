@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { WebContext } from '../data/WebContext';
+import { WebContext } from '../Data/WebContext';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { User, Mail, Phone, Calendar, Edit2, Save, X } from 'lucide-react';

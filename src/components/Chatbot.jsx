@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaTimes, FaRobot, FaPaperPlane } from "react-icons/fa";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { WebContext } from "../data/WebContext";
+import { WebContext } from "../Data/WebContext";
 
 const botApi = "https://mediconnect-pn3n.onrender.com/medical-chat";
 

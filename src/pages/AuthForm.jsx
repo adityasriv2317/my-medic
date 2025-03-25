@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
-import { WebContext } from "../data/WebContext";
+import { WebContext } from "../Data/WebContext";
 import axios from "axios";
 
 const BASE_URL = "https://mediconnect-pn3n.onrender.com";

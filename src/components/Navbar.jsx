@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { WebContext } from "../data/WebContext";
+import { WebContext } from "../Data/WebContext";
 import {
   Menu,
   X,
