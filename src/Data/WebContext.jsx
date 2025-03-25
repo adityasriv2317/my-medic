@@ -4,20 +4,31 @@ import { getUserFromCookies, setUserInCookies, removeUserFromCookies } from "./a
 export const WebContext = createContext();
 
 export const WebProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  // Initialize with proper null checks
+  const [user, setUser] = useState(() => {
+    try {
+      const localUser = localStorage.getItem("user");
+      return localUser && localUser !== "undefined" ? JSON.parse(localUser) : null;
+    } catch {
+      return null;
+    }
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Initialize user from cookies
   useEffect(() => {
     const initializeAuth = async () => {
       try {
-        const savedUser = getUserFromCookies();
-        if (savedUser) {
-          setUser(savedUser);
+        if (!user) {
+          const cookieUser = getUserFromCookies();
+          if (cookieUser) {
+            setUser(cookieUser);
+            localStorage.setItem("user", JSON.stringify(cookieUser));
+          }
         }
       } catch (err) {
         console.error("Error initializing auth:", err);
+        setUser(null);
       } finally {
         setLoading(false);
       }
@@ -26,37 +37,14 @@ export const WebProvider = ({ children }) => {
     initializeAuth();
   }, []);
 
-  const login = async (credentials) => {
+  const login = async (userData) => {
     setLoading(true);
     setError(null);
     
     try {
-      // Mock API call - replace with your actual API endpoint
-      const response = await new Promise((resolve) => {
-        setTimeout(() => {
-          if (credentials.email === "test@example.com" && credentials.password === "password") {
-            resolve({
-              user: {
-                name: "Test User",
-                email: credentials.email,
-                role: "user",
-                avatar: "https://ui-avatars.com/api/?name=Test+User&background=0D9488&color=fff",
-              },
-              token: "mock-jwt-token",
-            });
-          } else {
-            throw new Error("Invalid credentials");
-          }
-        }, 1000);
-      });
-
-      const userData = {
-        ...response.user,
-        token: response.token,
-      };
-
       setUser(userData);
       setUserInCookies(userData);
+      localStorage.setItem("user", JSON.stringify(userData));
       return { success: true, user: userData };
     } catch (err) {
       setError(err.message);
@@ -71,33 +59,10 @@ export const WebProvider = ({ children }) => {
     setError(null);
 
     try {
-      // Mock API call - replace with your actual API endpoint
-      const response = await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          if (userData.email === "test@example.com") {
-            reject(new Error("Email already exists"));
-          } else {
-            resolve({
-              user: {
-                name: userData.name,
-                email: userData.email,
-                role: "user",
-                avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(userData.name)}&background=0D9488&color=fff`,
-              },
-              token: "mock-jwt-token",
-            });
-          }
-        }, 1000);
-      });
-
-      const newUser = {
-        ...response.user,
-        token: response.token,
-      };
-
-      setUser(newUser);
-      setUserInCookies(newUser);
-      return { success: true, user: newUser };
+      setUser(userData);
+      setUserInCookies(userData);
+      localStorage.setItem("user", JSON.stringify(userData));
+      return { success: true, user: userData };
     } catch (err) {
       setError(err.message);
       return { success: false, error: err.message };
@@ -109,6 +74,7 @@ export const WebProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     removeUserFromCookies();
+    localStorage.removeItem("user");
   };
 
   const updateUserProfile = (updates) => {
@@ -116,6 +82,7 @@ export const WebProvider = ({ children }) => {
       const updatedUser = { ...user, ...updates };
       setUser(updatedUser);
       setUserInCookies(updatedUser);
+      localStorage.setItem("user", JSON.stringify(updatedUser));
     }
   };
 
@@ -129,7 +96,7 @@ export const WebProvider = ({ children }) => {
         user,
         loading,
         error,
-        isAuthenticated: checkAuth(),
+        isAuthenticated: !!user,  // Simplified auth check
         login,
         signup,
         logout,

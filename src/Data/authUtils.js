@@ -1,17 +1,36 @@
-import Cookies from "js-cookie";
-
-// Save user data in cookies
-export const setUserInCookies = (user) => {
-  Cookies.set("user", JSON.stringify(user), { expires: 7 }); // Expires in 7 days
-};
-
-// Get user data from cookies
 export const getUserFromCookies = () => {
-  const userData = Cookies.get("user");
-  return userData ? JSON.parse(userData) : null;
+  try {
+    const cookies = document.cookie.split(';');
+    const userCookie = cookies.find(cookie => cookie.trim().startsWith('user='));
+    if (userCookie) {
+      const userStr = userCookie.split('=')[1];
+      if (!userStr || userStr === 'undefined' || userStr === 'null') {
+        return null;
+      }
+      return JSON.parse(decodeURIComponent(userStr));
+    }
+    return null;
+  } catch (error) {
+    console.error('Error reading cookies:', error);
+    return null;
+  }
 };
 
-// Remove user data from cookies (Logout)
+export const setUserInCookies = (userData) => {
+  try {
+    if (!userData) return;
+    const userStr = encodeURIComponent(JSON.stringify(userData));
+    document.cookie = `user=${userStr}; path=/; max-age=2592000`; // 30 days
+  } catch (error) {
+    console.error('Error setting cookies:', error);
+  }
+};
+
 export const removeUserFromCookies = () => {
-  Cookies.remove("user");
+  try {
+    document.cookie = "user=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    localStorage.removeItem('user');
+  } catch (error) {
+    console.error('Error removing cookies:', error);
+  }
 };

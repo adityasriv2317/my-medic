@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { WebContext } from "../Data/WebContext";
 
-const botApi = "https://rentify-fm53.onrender.com/chat";
+const botApi = "https://mediconnect-pn3n.onrender.com/medical-chat";
 
 const Chatbot = () => {
   const { user } = useContext(WebContext);
@@ -43,9 +43,9 @@ const Chatbot = () => {
 
     try {
       const response = await axios.post(botApi, {
-        query: message,
-        region: "India",
+        message: message
       });
+      console.log("Chatbot response:", response.data.response);
 
       const botMessage = {
         sender: "bot",

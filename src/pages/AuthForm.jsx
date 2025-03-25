@@ -3,6 +3,9 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { WebContext } from "../Data/WebContext";
+import axios from "axios";
+
+const BASE_URL = "https://mediconnect-pn3n.onrender.com";
 
 const AuthPage = () => {
   const navigate = useNavigate();
@@ -38,14 +41,34 @@ const AuthPage = () => {
     setLoading(true);
 
     try {
-      const authFunction = isLogin ? login : signup;
-      const response = await authFunction(formData);
-
-      if (response.success) {
+      // const response = await authFunction(formData);
+      const response = await axios.post(
+        `${BASE_URL}/user/${isLogin ? "login" : "signup"}`,
+        formData
+      );
+      console.log("Auth response:", response.data);
+      if (response.status === 200) {
+        const userData = response.data;
+        if (isLogin) {
+          login(userData);
+          console.log("User logged in:", userData);
+        } else {
+          signup({
+            "name": formData.name,
+            "email": formData.email
+          });
+          console.log("User signed up:", userData);
+        }
         navigate("/");
       } else {
-        setError(response.error);
+        setError(response.data.error);
       }
+
+      // if (response.success) {
+      //   navigate("/");
+      // } else {
+      //   setError(response.error);
+      // }
     } catch (err) {
       setError(err.message || "An error occurred. Please try again.");
     } finally {
