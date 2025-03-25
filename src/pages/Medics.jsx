@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { WebContext } from "../Data/WebContext";
+import { WebContext } from "../data/WebContext";
 import { motion } from "framer-motion";
 import {
   Search,
