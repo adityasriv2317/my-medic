@@ -125,6 +125,7 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
           ) : (
+            // Auth Buttons
             <>
               <Link to="/auth?type=login">
                 <motion.button
