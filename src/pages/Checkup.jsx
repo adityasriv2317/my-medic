@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { toast } from "react-toastify";
 import ToastBox from "../components/ToastBox";
+import WaveformLoader from "../components/Waveform";
 
 const checkupApi = "https://mediconnect-pn3n.onrender.com/medical-chat";
 
@@ -231,7 +232,8 @@ const Checkup = () => {
 
                 {isProcessing && (
                   <div className="flex flex-col items-center justify-center h-[400px]">
-                    <Loader2 className="w-12 h-12 text-green-600 animate-spin mb-4" />
+                    {/* <Loader2 className="w-12 h-12 text-green-600 animate-spin mb-4" /> */}
+                    <WaveformLoader />
                     <p className="text-gray-600">Analyzing your symptoms...</p>
                   </div>
                 )}
