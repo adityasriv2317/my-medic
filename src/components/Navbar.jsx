@@ -35,35 +35,37 @@ const Navbar = () => {
   };
 
   return (
+    // Update the nav container classes
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] md:w-[90%] bg-gradient-to-r from-green-800 to-green-700 text-white shadow-xl py-3 px-4 sm:px-6 rounded-2xl z-50 backdrop-blur-sm border border-white/10"
+      className="fixed top-0 sm:top-4 left-0 sm:left-1/2 transform sm:-translate-x-1/2 w-full sm:w-[95%] lg:w-[90%] bg-gradient-to-r from-green-800 to-green-700 text-white shadow-xl py-2 sm:py-3 px-3 sm:px-6 sm:rounded-2xl z-50 backdrop-blur-sm border-b sm:border border-white/10"
     >
-      <div className="flex justify-between items-center">
-        {/* Logo */}
+      {/* Update the container spacing */}
+      <div className="flex justify-between items-center max-w-7xl mx-auto">
+        {/* Update Logo responsiveness */}
         <Link
           to="/"
-          className="flex items-center space-x-2 sm:space-x-3 hover:bg-white/10 transition-colors pr-3 rounded-r-full rounded-l-full group"
+          className="flex items-center space-x-2 hover:bg-white/10 transition-colors px-2 sm:px-3 py-1 rounded-full group"
         >
-          <div className="w-8 sm:w-10 h-8 sm:h-10 bg-white/10 group-hover:bg-white/20 rounded-full transition-colors flex items-center justify-center">
-            <img src="/ico.png" alt="My Medic" className="object-cover" />
+          <div className="w-7 sm:w-8 md:w-10 h-7 sm:h-8 md:h-10 bg-white/10 group-hover:bg-white/20 rounded-full transition-colors flex items-center justify-center">
+            <img src="/ico.png" alt="My Medic" className="w-5 sm:w-6 md:w-7" />
           </div>
-          <span className="text-xl md:text-2xl font-bold text-white">
+          <span className="text-lg sm:text-xl md:text-2xl font-bold text-white">
             My Medic
           </span>
         </Link>
 
-        {/* Desktop & Tablet Navigation */}
-        <ul className="hidden md:flex space-x-4 lg:space-x-4 text-base lg:text-lg">
+        {/* Update Desktop Navigation spacing */}
+        <ul className="hidden md:flex space-x-2 lg:space-x-4 text-sm lg:text-base">
           {navItems.map((item, index) => (
             <li key={index}>
               <Link
                 to={item.path}
-                className="relative px-3 py-2 transition duration-300 hover:bg-white/10 rounded-t-lg group flex items-center space-x-2"
+                className="relative px-2 lg:px-3 py-2 transition duration-300 hover:bg-white/10 rounded-lg group flex items-center space-x-1.5 lg:space-x-2"
               >
-                <item.icon size={18} className="opacity-80" />
+                <item.icon size={16} className="opacity-80" />
                 <span>{item.name}</span>
                 <span className="absolute left-0 bottom-0 w-full h-0.5 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
               </Link>
@@ -71,8 +73,8 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Account Section (Desktop & Tablet) */}
-        <div className="hidden md:flex items-center space-x-3">
+        {/* Update Account Section spacing */}
+        <div className="hidden md:flex items-center space-x-2 lg:space-x-3">
           {loading ? (
             <div className="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-xl">
               <div className="w-2 h-2 bg-white rounded-full animate-bounce" />
@@ -83,16 +85,16 @@ const Navbar = () => {
             <div className="relative">
               <motion.button
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="bg-white/10 text-white px-4 py-2 rounded-xl font-medium hover:bg-white/20 transition-colors flex items-center space-x-2"
+                className="bg-white/10 text-white px-3 lg:px-4 py-1.5 lg:py-2 rounded-xl font-medium hover:bg-white/20 transition-colors flex items-center space-x-2"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <img
                   src={user.avatar}
                   alt={user.name}
-                  className="w-6 h-6 rounded-full"
+                  className="w-5 sm:w-6 h-5 sm:h-6 rounded-full"
                 />
-                <span>{user.name}</span>
+                <span className="text-sm lg:text-base">{user.name}</span>
               </motion.button>
 
               <AnimatePresence>
@@ -125,15 +127,14 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
           ) : (
-            // Auth Buttons
             <>
               <Link to="/auth?type=login">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-5 py-2 text-sm bg-white text-green-800 rounded-xl hover:bg-gray-100 transition-colors font-medium shadow-lg flex items-center space-x-2"
+                  className="px-3 lg:px-4 py-1.5 lg:py-2 text-sm bg-white text-green-800 rounded-xl hover:bg-gray-100 transition-colors font-medium shadow-lg flex items-center space-x-1.5"
                 >
-                  <User size={16} />
+                  <User size={14} />
                   <span>Login</span>
                 </motion.button>
               </Link>
@@ -141,9 +142,9 @@ const Navbar = () => {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-5 py-2 text-sm bg-white/10 backdrop-blur-sm text-white rounded-xl hover:bg-white/20 transition-colors font-medium border border-white/30 flex items-center space-x-2"
+                  className="px-3 lg:px-4 py-1.5 lg:py-2 text-sm bg-white/10 backdrop-blur-sm text-white rounded-xl hover:bg-white/20 transition-colors font-medium border border-white/30 flex items-center space-x-1.5"
                 >
-                  <UserPlus size={16} />
+                  <UserPlus size={14} />
                   <span>Sign up</span>
                 </motion.button>
               </Link>
@@ -151,17 +152,17 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Update Mobile Menu Button */}
         <motion.button
-          className="md:hidden text-white bg-white/10 p-2 rounded-lg hover:bg-white/20 transition-colors"
+          className="md:hidden text-white bg-white/10 p-1.5 rounded-lg hover:bg-white/20 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           whileTap={{ scale: 0.95 }}
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
         </motion.button>
       </div>
 
-      {/* Mobile Navigation Menu */}
+      {/* Update Mobile Menu spacing */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -169,7 +170,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden overflow-hidden mt-4"
+            className="md:hidden overflow-hidden mt-2 mx-auto max-w-lg"
           >
             <ul className="flex flex-col space-y-2">
               {navItems.map((item, index) => (
