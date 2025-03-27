@@ -15,6 +15,67 @@ const Medicines = () => {
   const [showCart, setShowCart] = useState(false);
   const [cart, setCart] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  // Move mockPlaceOrder inside component
+  const mockPlaceOrder = async (orderData) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const savedOrder = {
+          id: Date.now(),
+          userId: user.id,
+          items: orderData.items,
+          total: orderData.total,
+          status: 'Processing',
+          orderDate: new Date().toISOString(),
+          deliveryAddress: user.address || 'Default Address',
+          paymentStatus: 'Pending'
+        };
+        const existingOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+        localStorage.setItem('orders', JSON.stringify([...existingOrders, savedOrder]));
+        resolve(savedOrder);
+      }, 1500);
+    });
+  };
+
+  // Move handleCheckout inside component
+  const handleCheckout = async () => {
+    if (cart.length === 0) {
+      toast.error('Your cart is empty!');
+      return;
+    }
+
+    setIsProcessing(true);
+    try {
+      const orderData = {
+        items: cart.map(item => ({
+          id: item.id,
+          name: item.name,
+          quantity: item.quantity,
+          price: item.price,
+          total: item.price * item.quantity
+        })),
+        total: cartTotal,
+        orderDate: new Date().toISOString()
+      };
+
+      await mockPlaceOrder(orderData);
+      setCart([]); // Clear cart after successful order
+      toast.success('Order placed successfully! Redirecting to payment...');
+      setShowCart(false);
+      navigate('/payment', { 
+        state: { 
+          orderTotal: cartTotal,
+          orderItems: cart,
+          orderId: Date.now()
+        } 
+      });
+    } catch (error) {
+      toast.error('Failed to place order. Please try again.');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
 
   useEffect(() => {
     if (!loading && !user) {
@@ -43,7 +104,7 @@ const Medicines = () => {
       brand: "Crocin",
       category: "Pain Relief",
       price: 45.99,
-      image: "https://via.placeholder.com/150",
+      image: "https://www.netmeds.com/images/product-v1/600x600/313655/crocin_pain_relief_tablet_15s_0.jpg",
       description: "Fever and pain relief medication",
       stock: 50
     },
@@ -53,11 +114,110 @@ const Medicines = () => {
       brand: "Mox",
       category: "Antibiotics",
       price: 149.99,
-      image: "https://via.placeholder.com/150",
+      image: "https://5.imimg.com/data5/SELLER/Default/2021/1/KF/VF/XG/3823480/mox-500-capsule.jpg",
       description: "Antibiotic for bacterial infections",
       stock: 30
     },
-    // Add more medicines as needed
+    {
+      id: 3,
+      name: "Vitamin D3",
+      brand: "HealthVit",
+      category: "Vitamins",
+      price: 299.99,
+      image: "https://cdn01.pharmeasy.in/dam/products_otc/T70695/healthvit-vitamin-d3-60000-iu-capsule-2-1674482021.jpg",
+      description: "Supports bone health and immunity",
+      stock: 45
+    },
+    {
+      id: 4,
+      name: "Bandage Roll",
+      brand: "Dettol",
+      category: "First Aid",
+      price: 89.99,
+      image: "https://5.imimg.com/data5/SELLER/Default/2021/6/VN/NM/DN/3823480/dettol-antiseptic-liquid.jpg",
+      description: "Sterile bandage for wounds",
+      stock: 100
+    },
+    {
+      id: 5,
+      name: "Ibuprofen",
+      brand: "Brufen",
+      category: "Pain Relief",
+      price: 79.99,
+      image: "https://5.imimg.com/data5/SELLER/Default/2021/3/KO/QG/XF/3823480/brufen-tablet.jpg",
+      description: "Anti-inflammatory pain reliever",
+      stock: 40
+    },
+    {
+      id: 6,
+      name: "Multivitamin",
+      brand: "Centrum",
+      category: "Vitamins",
+      price: 449.99,
+      image: "https://cdn01.pharmeasy.in/dam/products_otc/207833/centrum-adults-under-50-tablets-2-1674482094.jpg",
+      description: "Complete daily vitamins and minerals",
+      stock: 25
+    },
+    {
+      id: 7,
+      name: "Antiseptic Solution",
+      brand: "Savlon",
+      category: "First Aid",
+      price: 129.99,
+      image: "https://www.netmeds.com/images/product-v1/600x600/15114/savlon_antiseptic_liquid_100_ml_0.jpg",
+      description: "Wound cleaning solution",
+      stock: 60
+    },
+    {
+      id: 8,
+      name: "Azithromycin",
+      brand: "Azee",
+      category: "Antibiotics",
+      price: 199.99,
+      image: "https://5.imimg.com/data5/SELLER/Default/2021/2/SI/BK/PQ/3823480/azee-500-tablet.jpg",
+      description: "Broad-spectrum antibiotic",
+      stock: 20
+    },
+    {
+      id: 9,
+      name: "Calcium + D3",
+      brand: "Shelcal",
+      category: "Vitamins",
+      price: 249.99,
+      image: "https://cdn01.pharmeasy.in/dam/products_otc/159115/shelcal-500mg-tablet-15s-2-1674482214.jpg",
+      description: "Bone health supplement",
+      stock: 35
+    },
+    {
+      id: 10,
+      name: "First Aid Kit",
+      brand: "PharmaCare",
+      category: "First Aid",
+      price: 599.99,
+      image: "https://5.imimg.com/data5/SELLER/Default/2021/8/NB/OE/DM/3823480/first-aid-kit.jpg",
+      description: "Complete emergency care kit",
+      stock: 15
+    },
+    {
+      id: 11,
+      name: "Aspirin",
+      brand: "Disprin",
+      category: "Pain Relief",
+      price: 39.99,
+      image: "https://www.netmeds.com/images/product-v1/600x600/341517/disprin_tablet_10s_0.jpg",
+      description: "Pain relief and blood thinner",
+      stock: 70
+    },
+    {
+      id: 12,
+      name: "Cetirizine",
+      brand: "Alerid",
+      category: "Antibiotics",
+      price: 69.99,
+      image: "https://cdn01.pharmeasy.in/dam/products_otc/I04102/alerid-tablet-10s-2-1674482181.jpg",
+      description: "Antihistamine for allergies",
+      stock: 55
+    }
   ];
 
   const categories = ['All', 'Pain Relief', 'Antibiotics', 'Vitamins', 'First Aid'];
@@ -229,12 +389,27 @@ const Medicines = () => {
                   <span className="text-lg font-semibold">Total:</span>
                   <span className="text-xl font-bold">₹{cartTotal.toFixed(2)}</span>
                 </div>
+                {/* Replace the existing checkout button with this */}
                 <button
-                  onClick={() => {/* Handle checkout */}}
-                  className="w-full bg-green-600 text-white py-3 rounded-xl hover:bg-green-700 flex items-center justify-center space-x-2"
+                  onClick={handleCheckout}
+                  disabled={isProcessing || cart.length === 0}
+                  className={`w-full py-3 rounded-xl flex items-center justify-center space-x-2 ${
+                    isProcessing || cart.length === 0
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-green-600 hover:bg-green-700'
+                  } text-white`}
                 >
-                  <span>Proceed to Checkout</span>
-                  <ArrowRight size={20} />
+                  {isProcessing ? (
+                    <div className="flex items-center space-x-2">
+                      <div className="w-5 h-5 border-t-2 border-b-2 border-white rounded-full animate-spin" />
+                      <span>Processing...</span>
+                    </div>
+                  ) : (
+                    <>
+                      <span>Proceed to Checkout</span>
+                      <ArrowRight size={20} />
+                    </>
+                  )}
                 </button>
               </div>
             </div>

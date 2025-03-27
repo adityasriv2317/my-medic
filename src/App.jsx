@@ -9,6 +9,7 @@ import Payment from "./pages/Payment";
 import Profile from "./pages/Profile";
 import { ToastContainer } from "react-toastify";
 import Medicines from "./pages/Medicines";
+import AppointmentPage from "./pages/AppointmentPage";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/payment" element={<Payment />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/medicines" element={<Medicines />} />
+          <Route path="/appointments" element={<AppointmentPage />} />
         </Routes>
         <ToastContainer />
       </Router>
