@@ -8,6 +8,8 @@ import Footer from '../components/Footer';
 import { toast } from 'react-toastify';
 import ToastBox from '../components/ToastBox';
 
+import medicine from '../Data/medApi';
+
 const Medicines = () => {
   const { user, loading } = useContext(WebContext);
   const navigate = useNavigate();
@@ -104,7 +106,7 @@ const Medicines = () => {
       brand: "Crocin",
       category: "Pain Relief",
       price: 45.99,
-      image: "https://www.netmeds.com/images/product-v1/600x600/313655/crocin_pain_relief_tablet_15s_0.jpg",
+      image: medicine[0],
       description: "Fever and pain relief medication",
       stock: 50
     },
@@ -114,7 +116,7 @@ const Medicines = () => {
       brand: "Mox",
       category: "Antibiotics",
       price: 149.99,
-      image: "https://5.imimg.com/data5/SELLER/Default/2021/1/KF/VF/XG/3823480/mox-500-capsule.jpg",
+      image: medicine[1],
       description: "Antibiotic for bacterial infections",
       stock: 30
     },
@@ -124,7 +126,7 @@ const Medicines = () => {
       brand: "HealthVit",
       category: "Vitamins",
       price: 299.99,
-      image: "https://cdn01.pharmeasy.in/dam/products_otc/T70695/healthvit-vitamin-d3-60000-iu-capsule-2-1674482021.jpg",
+      image: medicine[2],
       description: "Supports bone health and immunity",
       stock: 45
     },
@@ -134,7 +136,7 @@ const Medicines = () => {
       brand: "Dettol",
       category: "First Aid",
       price: 89.99,
-      image: "https://5.imimg.com/data5/SELLER/Default/2021/6/VN/NM/DN/3823480/dettol-antiseptic-liquid.jpg",
+      image: medicine[3],
       description: "Sterile bandage for wounds",
       stock: 100
     },
@@ -144,7 +146,7 @@ const Medicines = () => {
       brand: "Brufen",
       category: "Pain Relief",
       price: 79.99,
-      image: "https://5.imimg.com/data5/SELLER/Default/2021/3/KO/QG/XF/3823480/brufen-tablet.jpg",
+      image: medicine[4],
       description: "Anti-inflammatory pain reliever",
       stock: 40
     },
@@ -154,7 +156,7 @@ const Medicines = () => {
       brand: "Centrum",
       category: "Vitamins",
       price: 449.99,
-      image: "https://cdn01.pharmeasy.in/dam/products_otc/207833/centrum-adults-under-50-tablets-2-1674482094.jpg",
+      image: medicine[5],
       description: "Complete daily vitamins and minerals",
       stock: 25
     },
@@ -164,7 +166,7 @@ const Medicines = () => {
       brand: "Savlon",
       category: "First Aid",
       price: 129.99,
-      image: "https://www.netmeds.com/images/product-v1/600x600/15114/savlon_antiseptic_liquid_100_ml_0.jpg",
+      image: medicine[6],
       description: "Wound cleaning solution",
       stock: 60
     },
@@ -174,7 +176,7 @@ const Medicines = () => {
       brand: "Azee",
       category: "Antibiotics",
       price: 199.99,
-      image: "https://5.imimg.com/data5/SELLER/Default/2021/2/SI/BK/PQ/3823480/azee-500-tablet.jpg",
+      image: medicine[7],
       description: "Broad-spectrum antibiotic",
       stock: 20
     },
@@ -184,7 +186,7 @@ const Medicines = () => {
       brand: "Shelcal",
       category: "Vitamins",
       price: 249.99,
-      image: "https://cdn01.pharmeasy.in/dam/products_otc/159115/shelcal-500mg-tablet-15s-2-1674482214.jpg",
+      image: medicine[8],
       description: "Bone health supplement",
       stock: 35
     },
@@ -194,7 +196,7 @@ const Medicines = () => {
       brand: "PharmaCare",
       category: "First Aid",
       price: 599.99,
-      image: "https://5.imimg.com/data5/SELLER/Default/2021/8/NB/OE/DM/3823480/first-aid-kit.jpg",
+      image: medicine[9],
       description: "Complete emergency care kit",
       stock: 15
     },
@@ -204,7 +206,7 @@ const Medicines = () => {
       brand: "Disprin",
       category: "Pain Relief",
       price: 39.99,
-      image: "https://www.netmeds.com/images/product-v1/600x600/341517/disprin_tablet_10s_0.jpg",
+      image: medicine[10],
       description: "Pain relief and blood thinner",
       stock: 70
     },
@@ -214,7 +216,7 @@ const Medicines = () => {
       brand: "Alerid",
       category: "Antibiotics",
       price: 69.99,
-      image: "https://cdn01.pharmeasy.in/dam/products_otc/I04102/alerid-tablet-10s-2-1674482181.jpg",
+      image: medicine[11],
       description: "Antihistamine for allergies",
       stock: 55
     }
