@@ -26,4 +26,5 @@ const medicine = [
     cetirizine,
 ];
 
+// This is a list of medicines with their respective images imported from the medicines folder.
 export default medicine;
