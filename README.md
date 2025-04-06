@@ -72,6 +72,7 @@ npm install
 npm run dev
 
 ## Project Structure
+```
 my-medic/
 ├── src/
 │   ├── components/     # Reusable UI components
@@ -81,12 +82,13 @@ my-medic/
 │   └── App.jsx        # Main application component
 ├── public/            # Public assets
 └── package.json       # Project dependencies
+```
 
 ## Deployed Links
-WebApp - [](https://my-medic.vercel.app/)
-ML Repo - [](https://github.com/abhishekrajdhar/medibot)
-Android App - [](https://github.com/alokyadav686/MyMedic)
-Backend Repo - [](https://github.com/AyushInKC/MediConnect)
+- **WebApp** – [my-medic.vercel.app](https://my-medic.vercel.app/)  
+- **ML Repo** – [github.com/abhishekrajdhar/medibot](https://github.com/abhishekrajdhar/medibot)  
+- **Android App** – [github.com/alokyadav686/MyMedic](https://github.com/alokyadav686/MyMedic)  
+- **Backend Repo** – [github.com/AyushInKC/MediConnect](https://github.com/AyushInKC/MediConnect)
 
 ## Contributing
 This is an open-source project. Contributions are welcome! You can clone the project and make changes or add functionalities if you like. And even publish as your own project.
