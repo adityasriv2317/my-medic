@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 import { toast } from 'react-toastify';
 import ToastBox from '../components/ToastBox';
 
-import medicine from '../Data/medApi';
+import medicine from '../../public/medApi';
 
 const Medicines = () => {
   const { user, loading } = useContext(WebContext);
