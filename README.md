@@ -82,6 +82,12 @@ my-medic/
 ├── public/            # Public assets
 └── package.json       # Project dependencies
 
+## Deployed Links
+WebApp - [](https://my-medic.vercel.app/)
+ML Repo - [](https://github.com/abhishekrajdhar/medibot)
+Android App - [](https://github.com/alokyadav686/MyMedic)
+Backend Repo - [](https://github.com/AyushInKC/MediConnect)
+
 ## Contributing
 This is an open-source project. Contributions are welcome! You can clone the project and make changes or add functionalities if you like. And even publish as your own project.
 
