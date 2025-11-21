@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { WebContext } from "../Data/WebContext";
 
-const botApi = "https://mediconnect-pn3n.onrender.com/medical-chat";
+const botApi = "https://medibot-1-z9sn.onrender.com/medical-chat";
 
 const Chatbot = () => {
   const { user } = useContext(WebContext);
