@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import ToastBox from "../components/ToastBox";
 import WaveformLoader from "../components/Waveform";
 
-const checkupApi = "https://mediconnect-pn3n.onrender.com/medical-chat";
+const checkupApi = "https://medibot-1-z9sn.onrender.com/medical-chat";
 
 const Checkup = () => {
   const { user, loading } = useContext(WebContext);
